@@ -1,3 +1,6 @@
+.. image:: https://github.com/ome/omero_search_engine/workflows/build/badge.svg
+   :target: https://github.com/ome/omero_search_engine/actions
+
 OMERO Search Engine
 --------------------
 
