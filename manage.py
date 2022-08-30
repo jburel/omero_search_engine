@@ -60,7 +60,7 @@ def delete_es_index(resource="all", es_index=None):
 @manager.option(
     "-r",
     "--resource",
-    help="resource name, deleting all data from the its related index",
+    help="resource name, deleting all data from the related index",
 )
 def delete_all_data_from_es_index(resource="None"):
     from omero_search_engine.cache_functions.elasticsearch.transform_data import (
@@ -73,7 +73,7 @@ def delete_all_data_from_es_index(resource="None"):
 @manager.command
 @manager.option("-r", "--resource", help="resource name, e.g. image")
 @manager.option("-d", "--data_folder", help="Folder contains the data files")
-@manager.option("-f", "--from_json", help="Folder contains the data files")
+@manager.option("-f", "--from_json", help="Indicate that data comes JSON files")
 def add_resource_data_to_es_index(resource=None, data_folder=None, from_json=False):
     """
     Insert data inside elastic search index by getting the data from csv files
@@ -213,7 +213,7 @@ def set_cache_rows_number(number_cache_rows=None):
     if number_cache_rows and number_cache_rows.isdigit():
         update_config_file({"CACHE_ROWS": int(number_cache_rows)})
     else:
-        search_omero_app.logger.info("No of cached rows has to be an integer")
+        search_omero_app.logger.info("The number of cached rows has to be an integer")  # noqa
 
 
 @manager.command
@@ -222,7 +222,7 @@ def set_searchengine_secret_key(secret_key=None):
     if secret_key:
         update_config_file({"SECRET_KEY": secret_key})
     else:
-        search_omero_app.logger.info("No value is provided")
+        search_omero_app.logger.info("No value provided")
 
 
 @manager.command
@@ -231,7 +231,7 @@ def set_max_page(page_size=None):
     if page_size and page_size.isdigit():
         update_config_file({"PAGE_SIZE": int(page_size)})
     else:
-        search_omero_app.logger.info("No valid attribute is provided")
+        search_omero_app.logger.info("No valid attribute provided")
 
 
 @manager.command
@@ -240,7 +240,7 @@ def set_no_processes(no_processes=None):
     if no_processes and no_processes.isdigit():
         update_config_file({"NO_PROCESSES": int(no_processes)})
     else:
-        search_omero_app.logger.info("No valid attribute is provided")
+        search_omero_app.logger.info("No valid attribute provided")
 
 
 @manager.command
@@ -254,7 +254,7 @@ def set_no_processes(no_processes=None):
     "--create_index",
     help="creating the elastic search index if set to True",  # noqa
 )
-@manager.option("-o", "--only_values", help="creating cached values only ")
+@manager.option("-o", "--only_values", help="creating cached values only")
 def cache_key_value_index(resource=None, create_index=None, only_values=None):
     """
     Cache the value bucket for each value for each resource
@@ -267,8 +267,8 @@ def cache_key_value_index(resource=None, create_index=None, only_values=None):
 
 
 @manager.command
-@manager.option("-j", "--json_file", help="creating cached values only ")
-@manager.option("-c", "--check_studies", help="check studies from idr ")
+@manager.option("-j", "--json_file", help="creating cached values only")
+@manager.option("-c", "--check_studies", help="check studies from idr")
 @manager.option(
     "-d",
     "--deep_check",
