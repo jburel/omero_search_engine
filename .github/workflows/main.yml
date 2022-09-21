@@ -53,6 +53,7 @@ jobs:
     env:
       name: openmicroscopy/omero-searchengine
     steps:
+      - uses: actions/checkout@v2
       - name: Get prefix
         id: getprefix
         run: |
