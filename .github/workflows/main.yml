@@ -53,7 +53,6 @@ jobs:
     env:
       name: openmicroscopy/omero-searchengine
     steps:
-      - uses: actions/checkout@v2
       - name: Get prefix
         id: getprefix
         run: |
@@ -68,6 +67,7 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           prefix: "${{ steps.getprefix.outputs.prefix }}"
+      - uses: actions/checkout@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to DockerHub
@@ -81,7 +81,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./deployment/docker/centos/Dockerfile
+          file: deployment/docker/centos/Dockerfile
           push: true
           tags: ${{ join(fromJson(steps.gettags.outputs.tags)) }}
 
