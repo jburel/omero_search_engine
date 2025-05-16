@@ -91,7 +91,6 @@ def main(file):
                 if r['id'] not in ids:
                     ids.append(r["id"])
                     received_results.append(r)
-        total_images = 0
         for image in received_results:
             parent_id = image['project_id']
             if image['project_id'] is None and image['screen_id'] is None:
@@ -100,18 +99,14 @@ def main(file):
             if parent_id is not None:
                 if parent_id not in project_ids:
                     project_ids.append(parent_id)
-                if parent_id != 2101:
-                	total_images += 1
             else:
                 parent_id = image['screen_id']
                 if parent_id is not None:
                     if parent_id not in screens_ids:
                        screens_ids.append(parent_id)
-                    total_images += 1
 
         total = len(screens_ids) + len(project_ids)
         n = len(received_results)
-        print(total_images)
         print(f"{key}: {value}, number of images found: {n}, expected: {expected_images}. Number of experiments/screens found: {total}, expected: {expected_containers}")
 
 
