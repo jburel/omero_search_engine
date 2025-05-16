@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@data": [
+    {
+      "field": "Gene Symbol",
+      "term": "byn",
+      "images": 5,
+      "containers": 2,
+      "operator": "contains"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@data": [
+    {
+      "field": "Gene Symbol",
+      "term": "pax6",
+      "images": 2247,
+      "containers": 9
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "sox9",
+      "images": 1037,
+      "containers": 9
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "cdh1",
+      "images": 6799,
+      "containers": 15,
+      "operator": "contains"
+    },
+    {
+      "field": "Antibody Name",
+      "term": "cd20",
+      "images": 275,
+      "containers": 2
+    },
+    {
+      "field": "Antibody Name",
+      "term": "map2",
+      "images": 2744,
+      "containers": 2
+    },
+    {
+      "field": "Phenotype",
+      "term": "small cells",
+      "images": 7856,
+      "containers": 2
+    },
+    {
+      "field": "Compound Name",
+      "term": "biotin",
+      "images": 689,
+      "containers": 11,
+      "operator": "contains"
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "byn",
+      "images": 9,
+      "containers": 3,
+      "operator": "contains"
+    }
+  ]
+}

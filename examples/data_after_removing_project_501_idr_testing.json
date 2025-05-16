@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@data": [
+    {
+      "field": "Gene Symbol",
+      "term": "pax6",
+      "images": 1959,
+      "containers": 9
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "sox9",
+      "images": 749,
+      "containers": 9
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "cdh1",
+      "images": 5935,
+      "containers": 15,
+      "operator": "contains"
+    }
+  ]
+}

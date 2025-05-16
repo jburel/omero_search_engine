@@ -1,0 +1,57 @@
+{
+  "@context": "https://schema.org",
+  "@url": "https://idr.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@data": [
+    {
+      "field": "Gene Symbol",
+      "term": "pax6",
+      "images": 2260,
+      "containers": 10
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "sox9",
+      "images": 1108,
+      "containers": 10
+    },
+    {
+      "field": "Gene Symbol",
+      "term": "cdh1",
+      "images": 6827,
+      "containers": 16,
+      "operator": "contains"
+    },
+    {
+      "field": "Antibody Name",
+      "term": "cd20",
+      "images": 296,
+      "containers": 3
+    },
+    {
+      "field": "Antibody Name",
+      "term": "map2",
+      "images": 2744,
+      "containers": 2
+    },
+    {
+      "field": "Phenotype",
+      "term": "small cells",
+      "images": 7856,
+      "containers": 2
+    },
+    {
+      "field": "Compound Name",
+      "term": "biotin",
+      "images": 689,
+      "containers": 11,
+      "operator": "contains"
+    },
+    {
+      "field": "Imaging Method",
+      "term": "SPIM",
+      "images": 268,
+      "containers": 13,
+      "operator": "contains"
+    }
+  ]
+}
