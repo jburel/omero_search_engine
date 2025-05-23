@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "@url": "https://idr.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/",
   "@data": [
     {
       "field": "Gene Symbol",

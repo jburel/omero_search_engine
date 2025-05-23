@@ -1,31 +1,31 @@
 {
   "@context": "https://schema.org",
-  "@url": "https://idr.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/",
   "@data": [
     {
       "field": "Gene Symbol",
       "term": "pax6",
-      "images": 2260,
-      "containers": 10
+      "images": 2247,
+      "containers": 9
     },
     {
       "field": "Gene Symbol",
       "term": "sox9",
-      "images": 1108,
-      "containers": 10
+      "images": 1037,
+      "containers": 9
     },
     {
       "field": "Gene Symbol",
       "term": "cdh1",
-      "images": 6827,
-      "containers": 16,
+      "images": 6799,
+      "containers": 15,
       "operator": "contains"
     },
     {
       "field": "Antibody Name",
       "term": "cd20",
-      "images": 296,
-      "containers": 3
+      "images": 275,
+      "containers": 2
     },
     {
       "field": "Antibody Name",
@@ -47,11 +47,33 @@
       "operator": "contains"
     },
     {
-      "field": "Imaging Method",
-      "term": "SPIM",
-      "images": 268,
-      "containers": 13,
+      "field": "Gene Symbol",
+      "term": "byn",
+      "images": 9,
+      "containers": 3,
+      "operator": "contains"
+    },
+    {
+      "field": "Inhibitor",
+      "term": "z-vad-fmk",
+      "images": 640,
+      "containers": 1
+    },
+    {
+      "field": "Organism",
+      "term": "mus musculus",
+      "images": 134972,
+      "containers": 39,
+      "for_cached_call": true
+    },
+    {
+      "field": "Cell Line",
+      "term": "hela ",
+      "images": 1660291,
+      "containers": 42,
+      "for_cached_call": true,
       "operator": "contains"
     }
+
   ]
 }

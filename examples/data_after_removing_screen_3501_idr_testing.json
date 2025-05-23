@@ -1,8 +1,8 @@
 {
   "@context": "https://schema.org",
-  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/image/",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/",
   "@data": [
-    {
+        {
       "field": "Gene Symbol",
       "term": "pax6",
       "images": 2247,
@@ -52,6 +52,12 @@
       "images": 9,
       "containers": 3,
       "operator": "contains"
+    },
+    {
+      "field": "Inhibitor",
+      "term": "z-vad-fmk",
+      "images": 0,
+      "containers": 0
     }
   ]
 }

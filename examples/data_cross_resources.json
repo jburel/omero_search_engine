@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/",
+  "@data": [
+    {
+      "field": "Cell Line",
+      "term": "hela",
+      "images": 1660291,
+      "data_source": "idr",
+      "for_cached_call": true
+    },
+    {
+      "field": "Cell Line",
+      "term": "hela",
+      "images": 14162,
+      "data_source": "ssbd",
+      "for_cached_call": true
+    },
+    {
+      "field": "Organism",
+      "term": "drosophila",
+      "images": 90350,
+      "data_source": "idr",
+      "operator": "contains",
+      "for_cached_call": true
+    },
+    {
+      "field": "Organism",
+      "term": "drosophila",
+      "images": 1168,
+      "data_source": "ssbd",
+      "operator": "contains",
+      "for_cached_call": false
+    },
+    {
+      "field": "Organism",
+      "term": "drosophila",
+      "images": 30,
+      "data_source": "bia",
+      "operator": "contains",
+      "for_cached_call": false
+    }
+  ]
+}
