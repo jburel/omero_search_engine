@@ -3,12 +3,12 @@ import json
 import sys
 
 # url to send the query
-IMAGE_SEARCH = "image/searchannotation/?data_source={data_source}"
+ANNOTATION_SEARCH = "image/searchannotation/?data_source={data_source}"
 # url to get the next page for a query, bookmark is needed
-IMAGE_PAGE_SEARCH = "image/searchannotation_page/?data_source={data_source}"
+ANNOTATION_PAGE_SEARCH = "image/searchannotation_page/?data_source={data_source}"
 
 # url to load the cached data
-KEY_VALUE_SEARCH = "image/searchvaluesusingkey/?key={key}&data_source={data_source}"
+KEY_VALUE_SEARCH = "{context}/searchvaluesusingkey/?key={key}&data_source={data_source}"
 
 DATA_SOURCES = "data_sources/"
 
@@ -51,15 +51,42 @@ def load_results(url, data=None, method="post"):
         print(ex)
 
 
-def load_cached_results(url):
+def load_cached_results(url, context):
     try:
         resp = requests.get(url=url)
         returned_results = json.loads(resp.text)
-        if returned_results.get("data") is None or len(returned_results["data"]) == 0:
-            return None
-        return returned_results.get("data")
+        all_data = list()
+        if context == "all":
+            for key in returned_results:
+                data = returned_results[key].get("data")
+                if data is not None and len(data) != 0:
+                    all_data.append(data)
+            return all_data
+        data = returned_results.get("data")
+        if data is None or len(returned_results["data"]) == 0:
+            return all_data
+        all_data.append(data)
+        return all_data
     except Exception as ex:
         print(ex)
+
+def increase_count(n, result):
+    v = result.get('Number of images')
+    if v is not None:
+        n += v
+    v = result.get('Number of projects')
+    if v is not None:
+        n += v
+    v = result.get('Number of screens')
+    if v is not None:
+        n += v
+    v = result.get('Number of plates')
+    if v is not None:
+        n += v
+    v = result.get('Number of wells')
+    if v is not None:
+        n += v
+    return n
 
 
 def load_cached_data(entries, url, sources):
@@ -70,35 +97,38 @@ def load_cached_data(entries, url, sources):
         ids = []
         page = 1
         key = entry["field"]
-        value = entry["term"].strip()
+        value = entry["term"].strip().lower()
         source = entry.get("data_source")
+        context = entry.get("context")
         if source is None:
             source = "idr"  # default to IDR for now Add endpoint to find the default
-
+        if context is None:
+            context = "image"
         # number of expected images
         expected_images = entry["images"]
-        query = {'key': key}
+        query = {'key': key, 'context': context, 'data_source': source}
 
         operator = entry.get("operator")
         if operator is None:
             operator = "equals"
-        if source is None:
-            source = "idr"  # default to IDR for now Add endpoint to find the default
-        query.update({'data_source': source}) 
+
         search_url = url + KEY_VALUE_SEARCH.format(**query)
-        results = load_cached_results(search_url)
-        if results is None:
+        all_results = load_cached_results(search_url, context)
+        if all_results is None or len(all_results) == 0:
             print(f"{key}: {value}. No results found in source {source}")
         else:
             n = 0
-            for result in results:
-                if operator == "contains":
-                    if value in result['Value']:
-                        n += result['Number of images']
-                elif operator == "equals":
-                    if value == result['Value']:
-                        n += result['Number of images']
-            print(f"{key}: {value}, number of images found: {n}, expected: {expected_images}, source found: {result['data_source']}, expected: {source}")
+            for results in all_results:
+                for result in results:
+                    ds = result.get('data_source')
+                    if operator == "contains":
+                        if value in result['Value']:
+                            n = increase_count(n, result)
+
+                    elif operator == "equals":
+                        if value == result['Value']:
+                            n = increase_count(n, result)
+                print(f"{key}: {value}, number of objects found: {n}, expected: {expected_images}, source found: {ds}, expected: {source}")
 
 
 def load_non_cached_data(entries, url, sources):
@@ -144,7 +174,7 @@ def load_non_cached_data(entries, url, sources):
         
         query_data_json = json.dumps(query_data)
         query = {'data_source': source}
-        search_url = url + IMAGE_SEARCH.format(**query)
+        search_url = url + ANNOTATION_SEARCH.format(**query)
         bookmark, total_pages, results = load_results(search_url, data=query_data_json)
         # Check for duplicate
         if results is not None:
@@ -154,7 +184,7 @@ def load_non_cached_data(entries, url, sources):
                 received_results.append(r)
         screens_ids = []
         project_ids = []
-        search_page_url = url + IMAGE_PAGE_SEARCH.format(**query)
+        search_page_url = url + ANNOTATION_PAGE_SEARCH.format(**query)
         while page < total_pages:
             page += 1
             # add bookmark to the query, so it will return the next page
@@ -195,7 +225,12 @@ def main(file, cached_data):
     entries, url = load_configuration_file(file);
 
     # Check if the datasource is registered
-    sources = load_data_sources(url)
+    try:
+        sources = load_data_sources(url)
+    except Exception as e:
+        print("No data source")
+        sources = ["idr"]
+    
     if cached_data == 'True':
         load_cached_data(entries, url, sources)
     else:
