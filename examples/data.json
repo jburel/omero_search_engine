@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "@url": "https://idr-testing.openmicroscopy.org/searchengine/api/v1/resources/",
+  "@url": "https://idr.openmicroscopy.org/searchengine/api/v1/resources/",
   "@data": [
     {
       "field": "Gene Symbol",
@@ -68,12 +68,44 @@
     },
     {
       "field": "Cell Line",
-      "term": "hela ",
+      "term": "hela",
       "images": 1660291,
       "containers": 42,
       "for_cached_call": true,
       "operator": "contains"
+    },
+    {
+      "field": "Imaging Method",
+      "term": "fluorescence microscopy",
+      "images": 90,
+      "containers": 93,
+      "for_cached_call": true,
+      "operator": "contains",
+      "context": "all"
+    },
+    {
+      "field": "Cell Line",
+      "term": "ES-E14TG2a",
+      "images": 10543,
+      "containers": 5,
+      "for_cached_call": true,
+      "operator": "contains"
+    },
+    {
+      "field": "Compound Name",
+      "term": "methylsulfinylmethane",
+      "images": 3584,
+      "containers": 1,
+      "for_cached_call": true,
+      "operator": "contains"
+    },
+    {
+      "field": "Antibody Name",
+      "term": "ace-2",
+      "images": 81,
+      "containers": 1,
+      "for_cached_call": true,
+      "operator": "contains"
     }
-
   ]
 }

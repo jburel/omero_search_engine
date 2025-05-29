@@ -6,20 +6,23 @@
       "field": "Gene Symbol",
       "term": "pax6",
       "images": 1959,
-      "containers": 9
+      "containers": 9,
+      "for_cached_call": true
     },
     {
       "field": "Gene Symbol",
       "term": "sox9",
       "images": 749,
-      "containers": 9
+      "containers": 9,
+      "for_cached_call": true
     },
     {
       "field": "Gene Symbol",
       "term": "cdh1",
       "images": 5935,
       "containers": 15,
-      "operator": "contains"
+      "operator": "contains",
+      "for_cached_call": true
     }
   ]
 }
